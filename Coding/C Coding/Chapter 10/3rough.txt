@@ -1,0 +1,5 @@
+The Value Of Num : 45825
+
+ 45825
+This was added here because, there was a line here
+and the "a" mode adds the value at the end of the file.
