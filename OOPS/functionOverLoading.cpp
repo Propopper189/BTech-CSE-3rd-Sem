@@ -23,4 +23,5 @@ int main()
     add(a, b);
     add(10, 20, 30);   // Calls the function with three integer parameters
     return 0;
+
 }
