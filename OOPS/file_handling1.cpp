@@ -1,8 +1,11 @@
 #include <iostream>
-#include <fstream>
+#include <fstream> //stream = flow of data
 // #include <bits/stdc++.h>
 using namespace std;
 
+// ifstream is for input
+// ofstream is for writing data inside a file
+// fstream is for both
 int main()
 {
     ofstream fileOut("test.txt");
