@@ -3,7 +3,7 @@ using namespace std;
 
 int rear = -1;
 int front = -1;
-#define max_size 10
+#define max_size 4
 int arr[max_size];
 
 void enqueue(int data)
@@ -28,18 +28,31 @@ void dequeue()
 {
     if(front == -1)
     {
-        cout<<"Queue is empty\n";
+        cout<<"Queue is empty!\n";
         return;
     }
-    else if((1))
+    if(rear == front)
     {
-
+        rear = -1;
+        front = -1;
+        return;
     }
+    front = (front + 1) % max_size;
 }
 
 void display()
 {
-    
+    if(front == -1)
+    {
+        cout<<"Queue is empty!\n";
+        return;
+    }
+    int i = front;
+    do
+    {
+        cout<<arr[i]<<" ";
+        i = (i + 1) % max_size;
+    }while(i != (rear + 1) % max_size);
 }
 
 int main()
