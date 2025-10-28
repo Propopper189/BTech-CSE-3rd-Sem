@@ -78,6 +78,27 @@ void inOrder(Node *root)
         inOrder(root->right);
     }
 }
+
+int check(Node *root, int key)
+{
+    if(root == NULL)
+    {
+        return -1;
+    }
+    if(root->data == key)
+    {
+        return 1;
+    }
+    else if(key < root->data)
+    {
+        return check(root->left, key);
+    }
+    else
+    {
+        return check(root->right, key);
+    }
+    return -1;
+}
 int main()
 {
     Node *root = NULL;
@@ -90,5 +111,17 @@ int main()
         insert(root, data);
     }
     inOrder(root);
+    int key;
+    cout<<"Enter Key : ";
+    cin>>key;
+    int a = check(root, key);
+    if(a == 1)
+    {
+        cout<<"Present\n";
+    }
+    else
+    {
+        cout<<"Absent\n";
+    }
     return 0;
 }
