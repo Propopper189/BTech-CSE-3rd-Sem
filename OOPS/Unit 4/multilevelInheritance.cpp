@@ -78,12 +78,12 @@ int main()
 {
     Teacher chetanSir("Chetan Singh", 23, "CSE", "Networks");
     chetanSir.printTeacher();
-    cout<<endl<<endl;
+    cout<<endl;
     Student Aquib("Aquib Jawaid", 21, 28, 8.6, "Btech CSE", "Lovely Professional University");
     Aquib.printStudent();
-    cout<<endl<<endl;
+    cout<<endl;
     Intern Raj("Raj", 21, 28, 8.6, "Btech CSE", "Lovely Professional University", 9.8, 102, "TCS", "SDE");
     Raj.printIntern();
-    cout<<endl<<endl;
+    cout<<endl;
     return 0;
 }
