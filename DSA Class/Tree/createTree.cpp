@@ -85,6 +85,7 @@ int main()
                 cout<<endl;
                 break;
             case 4:
+                cout<<"Exiting Program\n";
                 exit(0);
                 break;
             default:
