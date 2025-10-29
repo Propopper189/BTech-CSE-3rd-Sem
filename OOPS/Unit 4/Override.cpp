@@ -22,6 +22,8 @@ class Dog : public Animal
 int main()
 {
     Dog gr;
+    Animal l;
+    l.sound();
     Animal *ptr = &gr;
     gr.sound();
     ptr->sound();
