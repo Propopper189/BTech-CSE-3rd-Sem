@@ -45,45 +45,61 @@ Node* inOrderPred(Node* root)
 
 Node* deleteNode(Node *root, int data)
 {
-    if(root == NULL) return NULL;
-
+    if(root == NULL)
+    {
+        return NULL;
+    }
     if(data < root->data)
+    {
         root->left = deleteNode(root->left, data);
+    }
     else if(data > root->data)
+    {
         root->right = deleteNode(root->right, data);
+    }
     else
     {
-        // Case 1: No child
         if(root->left == NULL && root->right == NULL)
         {
             delete root;
             return NULL;
         }
-        // Case 2: One child (right)
         else if(root->left == NULL)
         {
-            Node* temp = root->right;
+            Node *temp = root->right;
             delete root;
             return temp;
         }
-        // Case 3: One child (left)
         else if(root->right == NULL)
         {
-            Node* temp = root->left;
+            Node *temp = root->left;
             delete root;
             return temp;
         }
-        // Case 4: Two children
         else
         {
-            Node *temp = inOrderPred(root->left);
-            root->data = temp->data;
-            root->left = deleteNode(root->left, temp->data);
+            Node *iPre = inOrderPred(root->left);
+            root->data = iPre->data;
+            root->left = deleteNode(root->left, iPre->data);
         }
     }
     return root;
 }
-
+Node* deleteAllChild(Node *root)
+{
+    if(root == NULL)
+    {
+        return root;
+    }
+    if(root->left == NULL && root->right == NULL)
+    {
+        delete root;
+        return NULL;
+    } 
+    root->left = deleteAllChild(root->left);
+    root->right = deleteAllChild(root->right);
+    return root;
+}
 int main()
 {
     Node *root = NULL;
@@ -99,13 +115,7 @@ int main()
     cout << "Inorder before deletion: ";
     inOrder(root);
     cout << endl;
-
-    int key;
-    cout << "Enter key to delete: ";
-    cin >> key;
-
-    root = deleteNode(root, key);
-
+    root = deleteAllChild(root);
     cout << "Inorder after deletion: ";
     inOrder(root);
     cout << endl;
