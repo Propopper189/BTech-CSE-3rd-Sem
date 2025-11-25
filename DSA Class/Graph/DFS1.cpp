@@ -44,7 +44,7 @@ void dfs(int graph[][max_size], int start, char *names)
         int node = s.top();
         s.pop();
         cout<<names[node]<<" ";
-        for(int i = max_size; i >= 0; i--)
+        for(int i = max_size; i > 0; i--)
         {
             if(graph[node][i] == 1 && !visited[i])
             {
