@@ -4,9 +4,14 @@ using namespace std;
 
 void print(vector<int> a)
 {
-    for(int i = 0; i < a.size(); i++)
+    // for(int i = 0; i < a.size(); i++)
+    // {
+    //     cout<<a[i]<<" ";
+    // }
+    // cout<<endl;
+    for(int x : a)
     {
-        cout<<a[i]<<" ";
+        cout<<x<<" ";
     }
     cout<<endl;
 }
