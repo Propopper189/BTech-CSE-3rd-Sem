@@ -8,7 +8,7 @@ T add(T a, T b)
 }
 int main()
 {
-    int a, b;
+    char a, b; // you can directly write int a, b; | double a, b; | and so on..
     cin>>a>>b;
     cout<<add(a, b)<<endl;
     return 0;
