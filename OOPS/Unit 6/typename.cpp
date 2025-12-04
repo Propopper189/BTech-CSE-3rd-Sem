@@ -31,8 +31,8 @@ void Array<T>::print()
 }
 int main()
 {
-    int arr[] = {1, 2, 3, 4, 5};
-    Array<int> a(arr, 5);
+    char arr[] = {'1', 'a', '3', '4', '5'};
+    Array<char> a(arr, 5);
     a.print();
     return 0;
 }
