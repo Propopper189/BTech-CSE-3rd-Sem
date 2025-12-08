@@ -2,9 +2,9 @@
 Q1. Stack using Array
 Write a program to implement a 
 stack using arrays with operations:
-push
-pop
-display
+a) push
+b) pop
+c) display
 */
 
 #include <iostream>
