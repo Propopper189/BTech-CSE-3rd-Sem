@@ -4,6 +4,7 @@
 // push_back(), erase(pos) ;
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 int main()
@@ -49,5 +50,27 @@ int main()
     {
         cout<<v.at(i)<<" ";
     }
+    cout<<endl<<"Using Iterators : ";
+    for(vector<int>::iterator it = v.begin(); it != v.end(); it++)
+    {
+        cout<<*it<<" ";
+    }
+    cout<<"\nDereferencing [v.begin()] : "<<*(v.begin())<<endl;
+    cout<<"Dereferencing [v.end() - 1] : "<<*(v.end() - 1)<<endl;
+    v.erase(v.begin() + 1);
+    cout<<"After erasing [v.begin() + 1] : "; 
+    for(vector<int>::iterator it = v.begin(); it != v.end(); it++)
+    {
+        cout<<*it<<" ";
+    }
+    cout<<endl;
+    cout<<"Finding value (present) : ";
+    cout<<(find(v.begin(), v.end(), 100)) - v.begin()<<endl;
+    cout<<"Finding value (not present) : ";
+    if((find(v.begin(), v.end(), 101)) == v.end())
+    {
+        cout<<"101 not present"<<endl;
+    } 
+    // cout<<binary_search(v.begin(), v.end(), 2)<<endl; For sorted vector only   
     return 0;
 }
