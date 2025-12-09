@@ -25,6 +25,21 @@ void BFS(int graph[V][V], int source)
         }
     }   
 }
+
+bool visited[V] = {false};
+void DFS(int graph[V][V], int i)
+{
+    int j;
+    cout<<i<<" ";
+    visited[i] = true;
+    for(int j = 0; j < V; j++)
+    {
+        if(graph[i][j] == 1 && !visited[j])
+        {
+            DFS(graph, j);
+        }
+    }
+}
 int main()
 {
     int graph[V][V];
@@ -37,6 +52,7 @@ int main()
     }
     int source;
     cin>>source;
-    BFS(graph, source);
+    // BFS(graph, source);
+    DFS(graph, source);
     return 0;
 }
