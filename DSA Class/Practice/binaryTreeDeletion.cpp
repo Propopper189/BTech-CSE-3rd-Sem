@@ -14,11 +14,11 @@ struct Node
     }
 };
 
-Node *insert(Node* &root, int data)
+Node* insert(Node* &root, int data)
 {
-    Node *newNode = new Node(data);
     if(root == NULL)
     {
+        Node *newNode = new Node(data);
         root = newNode;
         return newNode;
     }
@@ -34,36 +34,82 @@ Node *insert(Node* &root, int data)
 
 void inOrder(Node *root)
 {
-    if(root != NULL)
+    if(root == NULL)
     {
-        inOrder(root->left);
-        cout<<root->data<<" ";
-        inOrder(root->right);
+        return;
     }
+    inOrder(root->left);
+    cout<<root->data<<" ";
+    inOrder(root->right);
 }
 
-void deleteNode(Node* &root, int data)
+Node* inPre(Node *root)
 {
-    
+    while(root->right != NULL)
+    {
+        root = root->right;
+    }
+    return root;
 }
+Node* deleteNode(Node *root, int data)
+{
+    if(root == NULL)
+    {
+        return NULL;
+    }
+    else if(data < root->data)
+    {
+        root->left = deleteNode(root->left, data);
+    }
+    else if(data > root->data)
+    {
+        root->right = deleteNode(root->right, data);
+    }
+    else
+    {
+        if(root->left == NULL && root->right == NULL)
+        {
+            delete root;
+            return NULL;
+        }
+        else if(root->left == NULL)
+        {
+            Node *temp = root->right;
+            delete root;
+            return temp;
+        }
+        else if(root->right == NULL)
+        {
+            Node *temp = root->left;
+            delete root;
+            return temp;
+        }
+        else
+        {
+            Node *iPre = inPre(root->left);
+            root->data = iPre->data;
+            root->left = deleteNode(root->left, iPre->data);
+        }
+    }
+    return root;
+}
+
 int main()
 {
-    Node *root = nullptr;
     int n;
     cin>>n;
+    Node *root = NULL;
     for(int i = 0; i < n; i++)
     {
         int data;
         cin>>data;
         insert(root, data);
     }
-    cout<<"Before deletion (InOrder) : ";
     inOrder(root);
+    cout<<endl;
     int key;
-    cout<<"Enter key : ";
     cin>>key;
-    deleteNode(root, key);
-    cout<<"After deletion (InOrder) : ";
+    root = deleteNode(root, key);
     inOrder(root);
     return 0;
 }
